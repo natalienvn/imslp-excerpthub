@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IMSLP Excerpt Hub — Home Page Mockup</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-primary: #0b1628;
+    --bg-card: #132140;
+    --bg-card-hover: #17294d;
+    --text-primary: #eef2f9;
+    --text-secondary: #8fa4c4;
+    --text-muted: #5a7199;
+    --accent: #4a90d9;
+    --accent-bright: #6aabf0;
+    --accent-dim: rgba(74,144,217,0.12);
+    --accent-glow: rgba(74,144,217,0.25);
+    --white: #ffffff;
+    --border: rgba(255,255,255,0.07);
+    --border-hover: rgba(255,255,255,0.14);
+    --radius: 12px;
+    --radius-lg: 16px;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--bg-primary); color: var(--text-primary);
+    font-family: var(--font-body); min-height: 100vh; overflow-x: hidden;
+  }
+  .screen { display: none; min-height: 100vh; }
+  .screen.active { display: block; }
+
+  .nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 48px; border-bottom: 1px solid var(--border);
+    position: sticky; top: 0; background: rgba(11,22,40,0.92);
+    backdrop-filter: blur(20px); z-index: 100;
+  }
+  .nav-left { display: flex; align-items: center; gap: 28px; }
+  .nav-logo {
+    font-family: var(--font-body); font-weight: 700; font-size: 18px;
+    letter-spacing: -0.02em; color: var(--white); cursor: pointer;
+  }
+  .nav-logo span { color: var(--accent-bright); }
+  .nav-links { display: flex; gap: 4px; }
+  .nav-link {
+    font-size: 13px; font-weight: 500; color: var(--text-secondary);
+    padding: 7px 14px; border-radius: 8px; cursor: pointer;
+    transition: all 0.2s; border: 1px solid transparent;
+  }
+  .nav-link:hover { color: var(--text-primary); background: rgba(255,255,255,0.04); }
+  .nav-link.active { color: var(--white); background: rgba(255,255,255,0.06); border-color: var(--border); }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .nav-pill {
+    font-size: 13px; font-weight: 500; padding: 7px 16px; border-radius: 8px;
+    background: rgba(255,255,255,0.06); color: var(--text-secondary);
+    border: 1px solid var(--border); cursor: pointer; transition: all 0.2s;
+  }
+  .nav-pill:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+  .nav-pill.instrument-active { background: var(--accent-dim); color: var(--accent-bright); border-color: var(--accent-glow); }
+  .nav-avatar {
+    width: 32px; height: 32px; border-radius: 50%; background: var(--bg-card);
+    border: 1px solid var(--border); display: flex; align-items: center;
+    justify-content: center; cursor: pointer;
+  }
+  .nav-avatar svg { width: 16px; height: 16px; stroke: var(--text-secondary); fill: none; }
+
+  .breadcrumb {
+    padding: 14px 48px; display: flex; align-items: center;
+    gap: 8px; font-size: 13px; color: var(--text-muted);
+  }
+  .breadcrumb-link { color: var(--text-secondary); cursor: pointer; transition: color 0.2s; }
+  .breadcrumb-link:hover { color: var(--accent-bright); }
+  .breadcrumb-sep { opacity: 0.4; }
+  .breadcrumb-current { color: var(--white); }
+
+  /* ═══ HOME ═══ */
+  .hero { text-align: center; padding: 64px 48px 40px; position: relative; }
+  .hero::before {
+    content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(74,144,217,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 16px; border-radius: 20px;
+    background: var(--accent-dim); border: 1px solid rgba(74,144,217,0.2);
+    font-size: 11px; font-weight: 600; color: var(--accent-bright);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
+  }
+  .hero-badge .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent-bright); animation: pulse 2s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .hero h1 {
+    font-family: var(--font-display); font-size: 58px; font-weight: 300;
+    line-height: 1.1; letter-spacing: -0.02em; color: var(--white); margin-bottom: 12px;
+  }
+  .hero h1 em { font-style: italic; color: var(--accent-bright); font-weight: 400; }
+  .hero .subtitle {
+    font-size: 16px; color: var(--text-secondary); font-weight: 400;
+    max-width: 440px; margin: 0 auto; line-height: 1.6;
+  }
+
+  .categories-section { padding: 8px 48px 100px; max-width: 900px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px;
+  }
+  .category-stack { display: flex; flex-direction: column; gap: 12px; }
+  .category-row {
+    display: flex; align-items: center;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 20px 28px;
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+    gap: 20px; position: relative; overflow: hidden;
+  }
+  .category-row::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--accent); opacity: 0; transition: opacity 0.3s;
+  }
+  .category-row:hover {
+    border-color: var(--border-hover); background: var(--bg-card-hover);
+    transform: translateX(4px); box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .category-row:hover::before { opacity: 1; }
+  .cat-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; background: var(--accent-dim); flex-shrink: 0;
+  }
+  .cat-info { min-width: 0; }
+  .cat-title {
+    font-family: var(--font-display); font-size: 26px; font-weight: 500;
+    color: var(--white); line-height: 1.2;
+  }
+  .cat-stat { font-size: 13px; color: var(--text-muted); margin-top: 2px; }
+  .cat-arrow {
+    width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s; flex-shrink: 0; margin-left: auto;
+  }
+  .category-row:hover .cat-arrow {
+    background: var(--accent-dim); border-color: rgba(74,144,217,0.3);
+    transform: translateX(3px);
+  }
+  .cat-arrow svg { width: 14px; height: 14px; stroke: var(--text-secondary); fill: none; }
+
+  .cat-collab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 8px;
+    padding: 8px 12px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+  }
+  .cat-collab-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+  }
+  .cat-collab-text strong {
+    color: var(--white);
+    font-weight: 600;
+  }
+
+  .cat-collab-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    margin-left: 32px;
+    padding-left: 32px;
+    border-left: 1px solid var(--border);
+  }
+  .cat-collab-icon {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    background: rgba(74,144,217,0.1);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  /* ═══ ORCHESTRA ═══ */
+  .category-hero { text-align: center; padding: 48px 48px 32px; }
+  .category-hero h1 {
+    font-family: var(--font-display); font-size: 46px; font-weight: 300;
+    color: var(--white); letter-spacing: -0.02em; margin-bottom: 6px;
+  }
+  .category-hero h1 em { font-style: italic; color: var(--accent-bright); font-weight: 400; }
+  .category-hero .subtitle { font-size: 15px; color: var(--text-secondary); }
+
+  .instrument-section { padding: 0 48px 100px; max-width: 1000px; margin: 0 auto; }
+  .family-label {
+    font-size: 11px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--text-muted);
+    margin-bottom: 12px; margin-top: 28px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .instrument-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .instrument-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 20px 18px;
+    cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  .instrument-card:hover {
+    border-color: var(--border-hover); background: var(--bg-card-hover);
+    transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25);
+  }
+  .instrument-card.available { border-left: 3px solid var(--accent); }
+  .instrument-card.coming-soon { opacity: 0.5; }
+  .instrument-card.coming-soon:hover { opacity: 0.65; transform: none; box-shadow: none; }
+  .inst-name {
+    font-family: var(--font-display); font-size: 20px; font-weight: 500;
+    color: var(--white); margin-bottom: 3px;
+  }
+  .inst-stats { font-size: 12px; color: var(--text-muted); }
+  .inst-badge {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 3px 8px; border-radius: 4px; margin-top: 6px;
+  }
+  .inst-badge.live { background: var(--accent-dim); color: var(--accent-bright); }
+  .inst-badge.soon { background: rgba(255,255,255,0.03); color: var(--text-muted); }
+
+  /* ═══ OPERA ═══ */
+  .collab-brand {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--white);
+    letter-spacing: -0.01em;
+  }
+  .collab-brand .x-mark {
+    display: inline-block;
+    margin: 0 10px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--text-muted);
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+  .collab-brand .brand-met {
+    font-weight: 600;
+  }
+  .collab-brand .brand-imslp {
+    color: var(--accent-bright);
+  }
+  .collab-subtitle {
+    text-align: center;
+    padding: 8px 0 0;
+  }
+
+  .video-placeholder { max-width: 760px; margin: 8px auto 32px; padding: 0 48px; }
+  .video-frame {
+    width: 100%; aspect-ratio: 16/9;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 14px;
+    position: relative; overflow: hidden;
+  }
+  .video-frame::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(74,144,217,0.04) 0%, transparent 60%);
+  }
+  .video-play-btn {
+    width: 60px; height: 60px; border-radius: 50%; background: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 8px 32px rgba(74,144,217,0.3);
+    position: relative; z-index: 1; transition: transform 0.2s, box-shadow 0.2s; cursor: pointer;
+  }
+  .video-play-btn:hover { transform: scale(1.08); box-shadow: 0 12px 40px rgba(74,144,217,0.45); }
+  .video-play-btn svg { width: 22px; height: 22px; fill: var(--white); stroke: none; margin-left: 3px; }
+  .video-label {
+    font-size: 14px; color: var(--text-secondary);
+    position: relative; z-index: 1; text-align: center; line-height: 1.5;
+  }
+  .video-label strong { color: var(--white); }
+
+  .coming-soon-state { text-align: center; padding: 40px 48px 80px; }
+  .coming-soon-state .cs-icon {
+    width: 56px; height: 56px; border-radius: 14px; background: var(--accent-dim);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 16px; font-size: 24px;
+  }
+  .coming-soon-state h2 {
+    font-family: var(--font-display); font-size: 26px; font-weight: 400;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .coming-soon-state p {
+    font-size: 14px; color: var(--text-secondary);
+    max-width: 380px; margin: 0 auto; line-height: 1.6;
+  }
+
+  /* ═══ OBOE ═══ */
+  .instrument-hero { text-align: center; padding: 48px 48px 24px; }
+  .instrument-hero h1 {
+    font-family: var(--font-display); font-size: 46px; font-weight: 300;
+    color: var(--white); letter-spacing: -0.02em;
+  }
+  .instrument-hero h1 em { font-style: italic; color: var(--accent-bright); font-weight: 400; }
+  .instrument-hero .subtitle { font-size: 15px; color: var(--text-secondary); margin-top: 6px; }
+  .search-area {
+    display: flex; justify-content: center; align-items: center;
+    gap: 10px; padding: 8px 48px 14px;
+  }
+  .search-bar {
+    width: 100%; max-width: 480px;
+    display: flex; align-items: center; gap: 10px;
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 10px 16px;
+  }
+  .search-bar svg { width: 17px; height: 17px; stroke: var(--text-muted); fill: none; flex-shrink: 0; }
+  .search-bar input {
+    flex: 1; background: none; border: none; outline: none;
+    color: var(--text-primary); font-family: var(--font-body); font-size: 14px;
+  }
+  .search-bar input::placeholder { color: var(--text-muted); }
+  .search-actions {
+    display: flex; gap: 2px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 10px; padding: 4px;
+  }
+  .search-action-btn {
+    width: 34px; height: 34px; border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: background 0.2s;
+  }
+  .search-action-btn:hover { background: rgba(255,255,255,0.06); }
+  .search-action-btn svg { width: 16px; height: 16px; stroke: var(--text-secondary); fill: none; }
+  .excerpt-count {
+    padding: 4px 48px 0; max-width: 1000px; margin: 0 auto;
+    font-size: 13px; color: var(--text-muted);
+  }
+  .excerpts-list {
+    padding: 12px 48px 100px; max-width: 1000px; margin: 0 auto;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .excerpt-card {
+    background: var(--bg-card); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+  }
+  .excerpt-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 22px 10px;
+  }
+  .excerpt-title {
+    font-family: var(--font-display); font-size: 19px; font-weight: 500; color: var(--white);
+  }
+  .excerpt-composer { font-size: 13px; color: var(--text-secondary); flex-shrink: 0; margin-left: 16px; }
+  .excerpt-body { display: flex; align-items: center; padding: 0 22px 14px; gap: 18px; }
+  .excerpt-img {
+    width: 200px; height: 52px; background: #f0ece4;
+    border-radius: 5px; flex-shrink: 0; position: relative; overflow: hidden;
+  }
+  .staff-line { position: absolute; left: 8px; right: 8px; height: 1px; background: #444; }
+  .excerpt-info .movement { font-size: 14px; color: var(--text-primary); font-weight: 500; margin-bottom: 2px; }
+  .excerpt-info .part { font-size: 12px; color: var(--text-muted); }
+  .excerpt-fav {
+    margin-left: auto; width: 30px; height: 30px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; border-radius: 6px; transition: background 0.2s; flex-shrink: 0;
+  }
+  .excerpt-fav:hover { background: rgba(255,255,255,0.06); }
+  .excerpt-fav svg { width: 17px; height: 17px; stroke: var(--text-muted); fill: none; }
+  .excerpt-more {
+    text-align: center; padding: 10px; border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--accent-bright); cursor: pointer; transition: background 0.2s;
+  }
+  .excerpt-more:hover { background: rgba(74,144,217,0.05); }
+
+  .screen-indicator {
+    position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px; background: var(--bg-card);
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 6px 10px; z-index: 200; box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+  }
+  .screen-dot {
+    padding: 6px 12px; border-radius: 7px; font-size: 11px; font-weight: 500;
+    color: var(--text-muted); cursor: pointer; transition: all 0.2s; white-space: nowrap;
+  }
+  .screen-dot:hover { color: var(--text-secondary); }
+  .screen-dot.active { background: var(--accent-dim); color: var(--accent-bright); }
+
+  @keyframes fadeUp { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+  .anim { animation: fadeUp 0.4s cubic-bezier(0.4,0,0.2,1) forwards; opacity: 0; }
+  .d1{animation-delay:.04s}.d2{animation-delay:.08s}.d3{animation-delay:.12s}
+  .d4{animation-delay:.16s}.d5{animation-delay:.2s}.d6{animation-delay:.24s}
+  .d7{animation-delay:.28s}.d8{animation-delay:.32s}.d9{animation-delay:.36s}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<div class="screen active" id="screen-home">
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div>
+      <div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-pill">Donate</div>
+      <div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    </div>
+  </nav>
+  <div class="hero">
+    <div class="hero-badge anim"><div class="dot"></div>Excerpt Hub</div>
+    <h1 class="anim d1">The Audition <em>Library</em></h1>
+    <p class="subtitle anim d2">Symphonic audition excerpts, curated by professionals.<br>Browse by category and instrument.</p>
+  </div>
+  <div class="categories-section">
+    <div class="section-label anim d3">Select a Category</div>
+    <div class="category-stack">
+      <div class="category-row anim d4" onclick="showScreen('orchestra')">
+        <div class="cat-icon">🎻</div>
+        <div class="cat-info"><div class="cat-title">Orchestra</div><div class="cat-stat">110 excerpts · 40 works</div></div>
+        <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+      </div>
+      <div class="category-row anim d5" onclick="showScreen('opera')">
+        <div class="cat-icon">🎭</div>
+        <div class="cat-info"><div class="cat-title">Opera</div><div class="cat-stat">Coming soon</div></div>
+        <div class="cat-collab-inline">
+          <div class="cat-collab-text">In collaboration with the<br><strong>Metropolitan Opera Orchestra</strong></div>
+        </div>
+        <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+      </div>
+      <div class="category-row anim d6" onclick="showScreen('ballet')">
+        <div class="cat-icon">🩰</div>
+        <div class="cat-info"><div class="cat-title">Ballet</div><div class="cat-stat">Coming soon</div></div>
+        <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ORCHESTRA -->
+<div class="screen" id="screen-orchestra">
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div>
+      <div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-pill">Donate</div>
+      <div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Orchestra</span>
+  </div>
+  <div class="category-hero">
+    <h1 class="anim">Orchestral <em>Excerpts</em></h1>
+    <p class="subtitle anim d1">Select an instrument to browse audition passages</p>
+  </div>
+  <div class="instrument-section">
+    <div class="family-label anim d2">Woodwinds</div>
+    <div class="instrument-grid">
+      <div class="instrument-card coming-soon anim d3"><div class="inst-name">Flute</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card available anim d3" onclick="showScreen('oboe')"><div class="inst-name">Oboe</div><div class="inst-stats">110 excerpts · 40 works</div><div class="inst-badge live">Live</div></div>
+      <div class="instrument-card coming-soon anim d3"><div class="inst-name">Clarinet</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d3"><div class="inst-name">Bassoon</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+    </div>
+    <div class="family-label anim d4">Brass</div>
+    <div class="instrument-grid">
+      <div class="instrument-card coming-soon anim d5"><div class="inst-name">French Horn</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d5"><div class="inst-name">Trumpet</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d5"><div class="inst-name">Trombone</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d5"><div class="inst-name">Tuba</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+    </div>
+    <div class="family-label anim d6">Strings</div>
+    <div class="instrument-grid">
+      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Violin</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Viola</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Cello</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Double Bass</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+    </div>
+    <div class="family-label anim d8">Percussion</div>
+    <div class="instrument-grid">
+      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Timpani</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Percussion</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Harp</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- OPERA -->
+<div class="screen" id="screen-opera">
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div>
+      <div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-pill">Donate</div>
+      <div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Opera</span>
+  </div>
+
+  <div class="category-hero">
+    <h1 class="anim">Opera <em>Excerpts</em></h1>
+    <div class="collab-subtitle anim d1">
+      <span class="collab-brand"><span class="brand-met">The Met</span><span class="x-mark">×</span><span class="brand-imslp">IMSLP</span></span>
+    </div>
+  </div>
+
+  <div class="video-placeholder anim d2">
+    <div class="video-frame">
+      <div class="video-play-btn">
+        <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+      </div>
+      <div class="video-label"><strong>Yannick Nézet-Séguin</strong> introduces the Opera Excerpt Collection</div>
+    </div>
+  </div>
+  <div class="coming-soon-state anim d3">
+    <div class="cs-icon">🎭</div>
+    <h2>Coming Soon</h2>
+    <p>Opera excerpts are currently being curated in partnership with the Metropolitan Opera Orchestra. Check back for updates.</p>
+  </div>
+</div>
+
+<!-- BALLET -->
+<div class="screen" id="screen-ballet">
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div>
+      <div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-pill">Donate</div>
+      <div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Ballet</span>
+  </div>
+  <div class="category-hero">
+    <h1 class="anim">Ballet <em>Excerpts</em></h1>
+    <p class="subtitle anim d1">Orchestral passages from the ballet repertoire</p>
+  </div>
+  <div class="coming-soon-state anim d2">
+    <div class="cs-icon">🩰</div>
+    <h2>Coming Soon</h2>
+    <p>Ballet excerpts are currently being curated. Check back for updates.</p>
+  </div>
+</div>
+
+<!-- OBOE -->
+<div class="screen" id="screen-oboe">
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div>
+      <div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-pill instrument-active">Oboe</div>
+      <div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    </div>
+  </nav>
+  <div class="breadcrumb">
+    <span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-link" onclick="showScreen('orchestra')">Orchestra</span>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Oboe</span>
+  </div>
+  <div class="instrument-hero">
+    <h1 class="anim">Orchestral Excerpts for <em>Oboe</em></h1>
+    <p class="subtitle anim d1">A library of symphonic audition passages</p>
+  </div>
+  <div class="search-area">
+    <div class="search-bar anim d2">
+      <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" placeholder="Search works or composers...">
+    </div>
+    <div class="search-actions anim d2">
+      <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
+      <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg></div>
+    </div>
+  </div>
+  <div class="excerpt-count anim d3">110 excerpts from 40 works</div>
+  <div class="excerpts-list">
+    <div class="excerpt-card anim d4">
+      <div class="excerpt-header">
+        <div class="excerpt-title">Brandenburg Concerto No.1 in F major, BWV 1046</div>
+        <div class="excerpt-composer">Johann Sebastian Bach</div>
+      </div>
+      <div class="excerpt-body">
+        <div class="excerpt-img">
+          <div class="staff-line" style="top:22%"></div><div class="staff-line" style="top:32%"></div><div class="staff-line" style="top:42%"></div><div class="staff-line" style="top:52%"></div><div class="staff-line" style="top:62%"></div>
+          <svg viewBox="0 0 200 52" style="position:absolute;top:0;left:0;width:100%;height:100%">
+            <circle cx="45" cy="22" r="2.5" fill="#444"/><circle cx="60" cy="28" r="2.5" fill="#444"/><circle cx="75" cy="20" r="2.5" fill="#444"/>
+            <circle cx="92" cy="32" r="2.5" fill="#444"/><circle cx="108" cy="24" r="2.5" fill="#444"/><circle cx="124" cy="18" r="2.5" fill="#444"/>
+            <circle cx="140" cy="30" r="2.5" fill="#444"/><circle cx="156" cy="26" r="2.5" fill="#444"/><circle cx="172" cy="20" r="2.5" fill="#444"/>
+            <circle cx="188" cy="28" r="2.5" fill="#444"/>
+          </svg>
+        </div>
+        <div class="excerpt-info">
+          <div class="movement"><strong>I. Allegro non troppo</strong> (mm.72 to end)</div>
+          <div class="part">Oboe 1</div>
+        </div>
+        <div class="excerpt-fav"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+      <div class="excerpt-more">+ 4 more excerpts</div>
+    </div>
+    <div class="excerpt-card anim d5">
+      <div class="excerpt-header">
+        <div class="excerpt-title">Brandenburg Concerto No.2 in F major, BWV 1047</div>
+        <div class="excerpt-composer">Johann Sebastian Bach</div>
+      </div>
+      <div class="excerpt-body">
+        <div class="excerpt-img">
+          <div class="staff-line" style="top:22%"></div><div class="staff-line" style="top:32%"></div><div class="staff-line" style="top:42%"></div><div class="staff-line" style="top:52%"></div><div class="staff-line" style="top:62%"></div>
+          <svg viewBox="0 0 200 52" style="position:absolute;top:0;left:0;width:100%;height:100%">
+            <circle cx="40" cy="26" r="2.5" fill="#444"/><circle cx="58" cy="20" r="2.5" fill="#444"/><circle cx="74" cy="30" r="2.5" fill="#444"/>
+            <circle cx="92" cy="24" r="2.5" fill="#444"/><circle cx="110" cy="18" r="2.5" fill="#444"/><circle cx="128" cy="28" r="2.5" fill="#444"/>
+            <circle cx="146" cy="22" r="2.5" fill="#444"/><circle cx="164" cy="32" r="2.5" fill="#444"/><circle cx="182" cy="26" r="2.5" fill="#444"/>
+          </svg>
+        </div>
+        <div class="excerpt-info">
+          <div class="movement"><strong>I. [no tempo indication]</strong> (7th measure of [C] to 2 measures before [D])</div>
+          <div class="part">Oboe solo</div>
+        </div>
+        <div class="excerpt-fav"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+    </div>
+    <div class="excerpt-card anim d6">
+      <div class="excerpt-header">
+        <div class="excerpt-title">Concerto for Harpsichord in F minor, BWV 1056</div>
+        <div class="excerpt-composer">Johann Sebastian Bach</div>
+      </div>
+      <div class="excerpt-body">
+        <div class="excerpt-img">
+          <div class="staff-line" style="top:22%"></div><div class="staff-line" style="top:32%"></div><div class="staff-line" style="top:42%"></div><div class="staff-line" style="top:52%"></div><div class="staff-line" style="top:62%"></div>
+          <svg viewBox="0 0 200 52" style="position:absolute;top:0;left:0;width:100%;height:100%">
+            <circle cx="42" cy="28" r="2.5" fill="#444"/><circle cx="60" cy="22" r="2.5" fill="#444"/><circle cx="78" cy="26" r="2.5" fill="#444"/>
+            <circle cx="98" cy="18" r="2.5" fill="#444"/><circle cx="118" cy="30" r="2.5" fill="#444"/><circle cx="138" cy="24" r="2.5" fill="#444"/>
+            <circle cx="158" cy="28" r="2.5" fill="#444"/><circle cx="178" cy="20" r="2.5" fill="#444"/>
+          </svg>
+        </div>
+        <div class="excerpt-info">
+          <div class="movement"><strong>II. Largo</strong> (complete)</div>
+          <div class="part">Oboe 1</div>
+        </div>
+        <div class="excerpt-fav"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="screen-indicator">
+  <div class="screen-dot active" id="dot-home" onclick="showScreen('home')">Home</div>
+  <div class="screen-dot" id="dot-orchestra" onclick="showScreen('orchestra')">Orchestra</div>
+  <div class="screen-dot" id="dot-opera" onclick="showScreen('opera')">Opera</div>
+  <div class="screen-dot" id="dot-ballet" onclick="showScreen('ballet')">Ballet</div>
+</div>
+
+<script>
+function showScreen(name) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.screen-dot').forEach(d => d.classList.remove('active'));
+  document.getElementById('screen-' + name).classList.add('active');
+  document.getElementById('dot-' + name).classList.add('active');
+  document.getElementById('screen-' + name).querySelectorAll('.anim').forEach(el => {
+    el.style.animation = 'none'; el.offsetHeight; el.style.animation = '';
+  });
+  window.scrollTo(0, 0);
+}
+</script>
+</body>
+</html>
