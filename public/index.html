@@ -92,11 +92,8 @@
   .instrument-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 18px; cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1); }
   .instrument-card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
   .instrument-card.available { border-left: 3px solid var(--accent); }
-  .instrument-card.has-subs { cursor: pointer; }
-  .instrument-card.coming-soon { opacity: 0.5; }
-  .instrument-card.coming-soon.has-subs { opacity: 0.75; }
-  .instrument-card.coming-soon.has-subs:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
-  .instrument-card.coming-soon:not(.has-subs):hover { opacity: 0.65; transform: none; box-shadow: none; }
+  .instrument-card.coming-soon { opacity: 0.7; }
+  .instrument-card.coming-soon:hover { opacity: 0.9; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(0,0,0,0.25); }
   .inst-name { font-family: var(--font-display); font-size: 20px; font-weight: 500; color: var(--white); margin-bottom: 3px; }
   .inst-stats { font-size: 12px; color: var(--text-muted); }
   .inst-badge { display: inline-block; font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 8px; border-radius: 4px; margin-top: 6px; }
@@ -235,9 +232,9 @@
   <div class="categories-section">
     <div class="section-label anim d3">Select a Category</div>
     <div class="category-stack">
-      <div class="category-row anim d4" onclick="showScreen('orchestra')">
+      <div class="category-row anim d4" onclick="showScreen('symphony')">
         <div class="cat-icon">🎻</div>
-        <div class="cat-info"><div class="cat-title">Orchestra</div><div class="cat-stat">110 excerpts</div></div>
+        <div class="cat-info"><div class="cat-title">Symphony</div><div class="cat-stat">110 excerpts</div></div>
         <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
       </div>
       <div class="category-row anim d5" onclick="showScreen('opera')">
@@ -258,10 +255,10 @@
 </div>
 
 <!-- ORCHESTRA -->
-<div class="screen" id="screen-orchestra">
+<div class="screen" id="screen-symphony">
   <nav class="nav"><div class="nav-left"><div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div><div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div></div><div class="nav-right"><div class="nav-pill">Donate</div><div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div></nav>
-  <div class="breadcrumb"><span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Orchestra</span></div>
-  <div class="category-hero"><h1 class="anim">Orchestral <em>Excerpts</em></h1><p class="subtitle anim d1">Select an instrument to browse audition passages</p></div>
+  <div class="breadcrumb"><span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span><span class="breadcrumb-sep">›</span><span class="breadcrumb-current">Symphony</span></div>
+  <div class="category-hero"><h1 class="anim">Symphonic <em>Excerpts</em></h1><p class="subtitle anim d1">Select an instrument to browse audition passages</p></div>
   <div class="instrument-section">
     <div class="family-label anim d2">Woodwinds</div>
     <div class="instrument-grid">
@@ -275,26 +272,26 @@
       <div class="instrument-card coming-soon has-subs anim d5" onclick="showInstrument('horn')"><div class="inst-name">French Horn</div><div class="inst-stats">Coming soon</div><div class="inst-subs">Also: 2nd, 3rd, 4th Horn</div><div class="inst-badge soon">Coming Soon</div></div>
       <div class="instrument-card coming-soon has-subs anim d5" onclick="showInstrument('trumpet')"><div class="inst-name">Trumpet</div><div class="inst-stats">Coming soon</div><div class="inst-subs">Also: Utility Trumpet</div><div class="inst-badge soon">Coming Soon</div></div>
       <div class="instrument-card coming-soon has-subs anim d5" onclick="showInstrument('trombone')"><div class="inst-name">Trombone</div><div class="inst-stats">Coming soon</div><div class="inst-subs">Also: Bass Trombone</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d5"><div class="inst-name">Tuba</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d5" onclick="showInstrument('tuba')"><div class="inst-name">Tuba</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
     </div>
     <div class="family-label anim d6">Strings</div>
     <div class="instrument-grid">
-      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Violin</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Viola</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Cello</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Double Bass</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d7"><div class="inst-name">Harp</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7" onclick="showInstrument('violin')"><div class="inst-name">Violin</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7" onclick="showInstrument('viola')"><div class="inst-name">Viola</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7" onclick="showInstrument('cello')"><div class="inst-name">Cello</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7" onclick="showInstrument('double-bass')"><div class="inst-name">Double Bass</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d7" onclick="showInstrument('harp')"><div class="inst-name">Harp</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
     </div>
     <div class="family-label anim d8">Percussion</div>
     <div class="instrument-grid">
-      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Timpani</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Percussion</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d9" onclick="showInstrument('timpani')"><div class="inst-name">Timpani</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d9" onclick="showInstrument('percussion')"><div class="inst-name">Percussion</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
     </div>
     <div class="family-label anim d8">Keyboard</div>
     <div class="instrument-grid">
-      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Piano</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Celesta</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
-      <div class="instrument-card coming-soon anim d9"><div class="inst-name">Organ</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d9" onclick="showInstrument('piano')"><div class="inst-name">Piano</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d9" onclick="showInstrument('celesta')"><div class="inst-name">Celesta</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
+      <div class="instrument-card coming-soon anim d9" onclick="showInstrument('organ')"><div class="inst-name">Organ</div><div class="inst-stats">Coming soon</div><div class="inst-badge soon">Coming Soon</div></div>
     </div>
   </div>
 </div>
@@ -389,124 +386,106 @@
 
 <div class="screen-indicator">
   <div class="screen-dot active" id="dot-home" onclick="showScreen('home')">Home</div>
-  <div class="screen-dot" id="dot-orchestra" onclick="showScreen('orchestra')">Orchestra</div>
+  <div class="screen-dot" id="dot-symphony" onclick="showScreen('symphony')">Symphony</div>
   <div class="screen-dot" id="dot-opera" onclick="showScreen('opera')">Opera</div>
   <div class="screen-dot" id="dot-ballet" onclick="showScreen('ballet')">Ballet</div>
 </div>
 
 <script>
-// Instrument data: id → { name, subs: [{ id, name }] }
 const instruments = {
-  oboe:     { name: 'Oboe',         subs: [{ id: 'english-horn', name: 'English Horn' }], live: true, excerpts: 110 },
-  flute:    { name: 'Flute',        subs: [{ id: 'piccolo', name: 'Piccolo' }] },
-  clarinet: { name: 'Clarinet',     subs: [{ id: 'bass-clarinet', name: 'Bass Clarinet' }, { id: 'eb-clarinet', name: 'E♭ Clarinet' }] },
-  bassoon:  { name: 'Bassoon',      subs: [{ id: 'contrabassoon', name: 'Contrabassoon' }] },
-  horn:     { name: 'French Horn',  subs: [{ id: '2nd-horn', name: '2nd Horn' }, { id: '3rd-horn', name: '3rd Horn' }, { id: '4th-horn', name: '4th Horn' }] },
-  trumpet:  { name: 'Trumpet',      subs: [{ id: 'utility-trumpet', name: 'Utility Trumpet' }] },
-  trombone: { name: 'Trombone',     subs: [{ id: 'bass-trombone', name: 'Bass Trombone' }] },
+  oboe:       { name: 'Oboe',         subs: [{ id: 'english-horn', name: 'English Horn' }], live: true, excerpts: 110 },
+  flute:      { name: 'Flute',        subs: [{ id: 'piccolo', name: 'Piccolo' }] },
+  clarinet:   { name: 'Clarinet',     subs: [{ id: 'bass-clarinet', name: 'Bass Clarinet' }, { id: 'eb-clarinet', name: 'E♭ Clarinet' }] },
+  bassoon:    { name: 'Bassoon',      subs: [{ id: 'contrabassoon', name: 'Contrabassoon' }] },
+  horn:       { name: 'French Horn',  subs: [{ id: '2nd-horn', name: '2nd Horn' }, { id: '3rd-horn', name: '3rd Horn' }, { id: '4th-horn', name: '4th Horn' }] },
+  trumpet:    { name: 'Trumpet',      subs: [{ id: 'utility-trumpet', name: 'Utility Trumpet' }] },
+  trombone:   { name: 'Trombone',     subs: [{ id: 'bass-trombone', name: 'Bass Trombone' }] },
+  tuba:       { name: 'Tuba',         subs: [] },
+  violin:     { name: 'Violin',       subs: [] },
+  viola:      { name: 'Viola',        subs: [] },
+  cello:      { name: 'Cello',        subs: [] },
+  'double-bass': { name: 'Double Bass', subs: [] },
+  harp:       { name: 'Harp',         subs: [] },
+  timpani:    { name: 'Timpani',      subs: [] },
+  percussion: { name: 'Percussion',   subs: [] },
+  piano:      { name: 'Piano',        subs: [] },
+  celesta:    { name: 'Celesta',      subs: [] },
+  organ:      { name: 'Organ',        subs: [] },
 };
 
-const placeholderExcerpts = [
-  { title: 'Symphony No.5 in C minor, Op.67', composer: 'Ludwig van Beethoven', movement: 'I. Allegro con brio', measures: '(mm.1–20)', part: '' },
-  { title: 'Symphony No.9 in E minor, Op.95', composer: 'Antonín Dvořák', movement: 'IV. Allegro con fuoco', measures: '(mm.10–44)', part: '' },
-  { title: 'Ein Heldenleben, Op.40', composer: 'Richard Strauss', movement: 'I. Der Held', measures: '(mm.1–12)', part: '' },
-];
-
-const staffSvg = `<div class="staff-line" style="top:22%"></div><div class="staff-line" style="top:32%"></div><div class="staff-line" style="top:42%"></div><div class="staff-line" style="top:52%"></div><div class="staff-line" style="top:62%"></div>
-<svg viewBox="0 0 200 52" style="position:absolute;top:0;left:0;width:100%;height:100%">
-<circle cx="45" cy="24" r="2.5" fill="#444"/><circle cx="62" cy="30" r="2.5" fill="#444"/><circle cx="78" cy="20" r="2.5" fill="#444"/>
-<circle cx="96" cy="32" r="2.5" fill="#444"/><circle cx="112" cy="24" r="2.5" fill="#444"/><circle cx="130" cy="18" r="2.5" fill="#444"/>
-<circle cx="148" cy="28" r="2.5" fill="#444"/><circle cx="166" cy="22" r="2.5" fill="#444"/><circle cx="184" cy="30" r="2.5" fill="#444"/>
-</svg>`;
-
+const staffSvg = `<div class="staff-line" style="top:22%"></div><div class="staff-line" style="top:32%"></div><div class="staff-line" style="top:42%"></div><div class="staff-line" style="top:52%"></div><div class="staff-line" style="top:62%"></div><svg viewBox="0 0 200 52" style="position:absolute;top:0;left:0;width:100%;height:100%"><circle cx="45" cy="24" r="2.5" fill="#444"/><circle cx="62" cy="30" r="2.5" fill="#444"/><circle cx="78" cy="20" r="2.5" fill="#444"/><circle cx="96" cy="32" r="2.5" fill="#444"/><circle cx="112" cy="24" r="2.5" fill="#444"/><circle cx="130" cy="18" r="2.5" fill="#444"/><circle cx="148" cy="28" r="2.5" fill="#444"/><circle cx="166" cy="22" r="2.5" fill="#444"/><circle cx="184" cy="30" r="2.5" fill="#444"/></svg>`;
 const favSvg = `<svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>`;
-
-const navHtml = `<nav class="nav"><div class="nav-left"><div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div><div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div></div><div class="nav-right"><div class="nav-pill instrument-active" id="inst-pill-NAME"></div><div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div></nav>`;
-
-function buildExcerptCard(ex, partName, delay) {
-  return `<div class="excerpt-card anim d${delay}">
-    <div class="excerpt-header"><div class="excerpt-title">${ex.title}</div><div class="excerpt-composer">${ex.composer}</div></div>
-    <div class="excerpt-body">
-      <div class="excerpt-img">${staffSvg}</div>
-      <div class="excerpt-info"><div class="movement"><strong>${ex.movement}</strong> ${ex.measures}</div><div class="part">${partName}</div></div>
-      <div class="excerpt-fav">${favSvg}</div>
-    </div>
-  </div>`;
-}
 
 function buildInstrumentScreen(id, inst) {
   const isLive = inst.live;
-  const excCount = inst.excerpts || 0;
   const displayName = inst.name;
+  const hasSubs = inst.subs.length > 0;
 
-  // Sub-instrument tabs at top
-  let tabsHtml = `<div class="sub-tabs anim d2">
-    <div class="sub-tab active">${displayName}</div>`;
-  inst.subs.forEach(s => {
-    tabsHtml += `<div class="sub-tab">${s.name}</div>`;
-  });
-  tabsHtml += `</div>`;
-
-  // Excerpt cards
-  let excerptHtml = '';
-  if (isLive) {
-    // Use the real oboe excerpts
-    excerptHtml += buildExcerptCard(
-      { title: 'Brandenburg Concerto No.1 in F major, BWV 1046', composer: 'Johann Sebastian Bach', movement: 'I. Allegro non troppo', measures: '(mm.72 to end)' },
-      displayName + ' 1', 4
-    );
-    excerptHtml += `<div class="excerpt-more">+ 4 more excerpts</div></div><div class="excerpt-card anim d5">`;
-    // Hacky but need to close/reopen properly — let me just do it cleanly
+  // Sub-instrument tabs (only if subs exist)
+  let tabsHtml = '';
+  if (hasSubs) {
+    tabsHtml = `<div class="sub-tabs anim d2">
+      <div class="sub-tab active" onclick="switchSubTab(this, '${id}', '${displayName}')">${displayName}</div>`;
+    inst.subs.forEach(s => {
+      tabsHtml += `<div class="sub-tab" onclick="switchSubTab(this, '${id}', '${s.name}')">${s.name}</div>`;
+    });
+    tabsHtml += `</div>`;
   }
 
-  // Build excerpt list
-  let excerptsListHtml = '';
-  const excerpts = isLive ? [
-    { title: 'Brandenburg Concerto No.1 in F major, BWV 1046', composer: 'Johann Sebastian Bach', movement: 'I. Allegro non troppo', measures: '(mm.72 to end)', part: displayName + ' 1' },
-    { title: 'Brandenburg Concerto No.2 in F major, BWV 1047', composer: 'Johann Sebastian Bach', movement: 'I. [no tempo indication]', measures: '(7th measure of [C] to 2 measures before [D])', part: displayName + ' solo' },
-    { title: 'Concerto for Harpsichord in F minor, BWV 1056', composer: 'Johann Sebastian Bach', movement: 'II. Largo', measures: '(complete)', part: displayName + ' 1' },
-  ] : placeholderExcerpts.map(e => ({ ...e, part: displayName + ' 1' }));
-
-  excerpts.forEach((ex, i) => {
-    excerptsListHtml += `<div class="excerpt-card anim d${4+i}">
-      <div class="excerpt-header"><div class="excerpt-title">${ex.title}</div><div class="excerpt-composer">${ex.composer}</div></div>
-      <div class="excerpt-body">
-        <div class="excerpt-img">${staffSvg}</div>
-        <div class="excerpt-info"><div class="movement"><strong>${ex.movement}</strong> ${ex.measures}</div><div class="part">${ex.part}</div></div>
-        <div class="excerpt-fav">${favSvg}</div>
+  let contentHtml = '';
+  if (isLive) {
+    const excerpts = [
+      { title: 'Brandenburg Concerto No.1 in F major, BWV 1046', composer: 'Johann Sebastian Bach', movement: 'I. Allegro non troppo', measures: '(mm.72 to end)', part: displayName + ' 1' },
+      { title: 'Brandenburg Concerto No.2 in F major, BWV 1047', composer: 'Johann Sebastian Bach', movement: 'I. [no tempo indication]', measures: '(7th measure of [C] to 2 measures before [D])', part: displayName + ' solo' },
+      { title: 'Concerto for Harpsichord in F minor, BWV 1056', composer: 'Johann Sebastian Bach', movement: 'II. Largo', measures: '(complete)', part: displayName + ' 1' },
+    ];
+    let excerptsListHtml = '';
+    excerpts.forEach((ex, i) => {
+      excerptsListHtml += `<div class="excerpt-card anim d${4+i}">
+        <div class="excerpt-header"><div class="excerpt-title">${ex.title}</div><div class="excerpt-composer">${ex.composer}</div></div>
+        <div class="excerpt-body">
+          <div class="excerpt-img">${staffSvg}</div>
+          <div class="excerpt-info"><div class="movement"><strong>${ex.movement}</strong> ${ex.measures}</div><div class="part">${ex.part}</div></div>
+          <div class="excerpt-fav">${favSvg}</div>
+        </div>
+        ${i === 0 ? '<div class="excerpt-more">+ more excerpts</div>' : ''}
+      </div>`;
+    });
+    contentHtml = `
+      <div class="search-area">
+        <div class="search-bar anim d3"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Search works or composers..."></div>
+        <div class="search-actions anim d3">
+          <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
+          <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+          <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg></div>
+        </div>
       </div>
-      ${i === 0 ? '<div class="excerpt-more">+ more excerpts</div>' : ''}
+      <div class="excerpt-count anim d3">${inst.excerpts} excerpts</div>
+      <div class="excerpts-list">${excerptsListHtml}</div>`;
+  } else {
+    contentHtml = `<div style="text-align:center;padding:60px 48px 80px;" class="anim d3">
+      <div style="width:56px;height:56px;border-radius:14px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:24px;">🎵</div>
+      <h2 style="font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--white);margin-bottom:8px;">Coming Soon</h2>
+      <p style="font-size:14px;color:var(--text-secondary);max-width:380px;margin:0 auto;line-height:1.6;">${displayName} excerpts are currently being curated. Check back for updates.</p>
     </div>`;
-  });
+  }
 
   return `<div class="screen" id="screen-${id}">
-    ${navHtml.replace('inst-pill-NAME', 'inst-pill-' + id).replace('</div></div></nav>', `</div></div></nav><script>document.getElementById('inst-pill-${id}').textContent='${displayName}'<\/script>`)}
+    <nav class="nav"><div class="nav-left"><div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div><div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div></div><div class="nav-right"><div class="nav-pill instrument-active">${displayName}</div><div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div></nav>
     <div class="breadcrumb">
       <span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span>
       <span class="breadcrumb-sep">›</span>
-      <span class="breadcrumb-link" onclick="showScreen('orchestra')">Orchestra</span>
+      <span class="breadcrumb-link" onclick="showScreen('symphony')">Symphony</span>
       <span class="breadcrumb-sep">›</span>
       <span class="breadcrumb-current">${displayName}</span>
     </div>
     <div class="instrument-hero">
-      <h1 class="anim">Orchestral Excerpts for <em>${displayName}</em></h1>
+      <h1 class="anim">Symphonic Excerpts for <em>${displayName}</em></h1>
       <p class="subtitle anim d1">A library of symphonic audition passages</p>
     </div>
     ${tabsHtml}
-    <div class="search-area">
-      <div class="search-bar anim d3">
-        <svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-        <input type="text" placeholder="Search works or composers...">
-      </div>
-      <div class="search-actions anim d3">
-        <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div>
-        <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
-        <div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg></div>
-      </div>
-    </div>
-    <div class="excerpt-count anim d3">${isLive ? excCount + ' excerpts' : 'Excerpts coming soon'}</div>
-    <div class="excerpts-list">
-      ${excerptsListHtml}
+    <div id="content-${id}">
+      ${contentHtml}
     </div>
   </div>`;
 }
@@ -516,6 +495,42 @@ const container = document.getElementById('dynamic-screens');
 Object.entries(instruments).forEach(([id, inst]) => {
   container.insertAdjacentHTML('beforeend', buildInstrumentScreen(id, inst));
 });
+
+// Sub-tab switching
+function switchSubTab(el, instrumentId, subName) {
+  // Update active tab
+  const tabs = el.parentElement.querySelectorAll('.sub-tab');
+  tabs.forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+
+  const contentArea = document.getElementById('content-' + instrumentId);
+  const inst = instruments[instrumentId];
+  const isMainInstrument = (subName === inst.name);
+  const isLive = inst.live && isMainInstrument;
+
+  if (isLive) {
+    // Show the real excerpts
+    const excerpts = [
+      { title: 'Brandenburg Concerto No.1 in F major, BWV 1046', composer: 'Johann Sebastian Bach', movement: 'I. Allegro non troppo', measures: '(mm.72 to end)', part: inst.name + ' 1' },
+      { title: 'Brandenburg Concerto No.2 in F major, BWV 1047', composer: 'Johann Sebastian Bach', movement: 'I. [no tempo indication]', measures: '(7th measure of [C] to 2 measures before [D])', part: inst.name + ' solo' },
+      { title: 'Concerto for Harpsichord in F minor, BWV 1056', composer: 'Johann Sebastian Bach', movement: 'II. Largo', measures: '(complete)', part: inst.name + ' 1' },
+    ];
+    let html = `<div class="search-area"><div class="search-bar"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Search works or composers..."></div><div class="search-actions"><div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div><div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg></div></div></div>`;
+    html += `<div class="excerpt-count">${inst.excerpts} excerpts</div><div class="excerpts-list">`;
+    excerpts.forEach((ex, i) => {
+      html += `<div class="excerpt-card"><div class="excerpt-header"><div class="excerpt-title">${ex.title}</div><div class="excerpt-composer">${ex.composer}</div></div><div class="excerpt-body"><div class="excerpt-img">${staffSvg}</div><div class="excerpt-info"><div class="movement"><strong>${ex.movement}</strong> ${ex.measures}</div><div class="part">${ex.part}</div></div><div class="excerpt-fav">${favSvg}</div></div>${i===0?'<div class="excerpt-more">+ more excerpts</div>':''}</div>`;
+    });
+    html += '</div>';
+    contentArea.innerHTML = html;
+  } else {
+    // Show coming soon for sub-instruments
+    contentArea.innerHTML = `<div style="text-align:center;padding:60px 48px 80px;">
+      <div style="width:56px;height:56px;border-radius:14px;background:var(--accent-dim);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:24px;">🎵</div>
+      <h2 style="font-family:var(--font-display);font-size:26px;font-weight:400;color:var(--white);margin-bottom:8px;">Coming Soon</h2>
+      <p style="font-size:14px;color:var(--text-secondary);max-width:380px;margin:0 auto;line-height:1.6;">${subName} excerpts are currently being curated. Check back for updates.</p>
+    </div>`;
+  }
+}
 
 function showScreen(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
