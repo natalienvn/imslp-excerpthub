@@ -458,7 +458,7 @@ function buildInstrumentScreen(instId, inst, catKey, cat) {
   return '<div class="screen" id="screen-' + screenId + '">' +
     '<nav class="nav"><div class="nav-left"><div class="nav-logo" onclick="showScreen(\'home\')">IMSLP <span>Excerpts</span></div><div class="nav-links"><div class="nav-link active">Browse</div><div class="nav-link">Suggest</div></div></div><div class="nav-right"><div class="nav-pill instrument-active">' + displayName + '</div><div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div></div></nav>' +
     '<div class="breadcrumb"><span class="breadcrumb-link" onclick="showScreen(\'home\')">Excerpt Hub</span><span class="breadcrumb-sep">\u203A</span><span class="breadcrumb-link" onclick="showScreen(\'' + cat.screenId + '\')">' + cat.breadcrumb + '</span><span class="breadcrumb-sep">\u203A</span><span class="breadcrumb-current">' + displayName + '</span></div>' +
-    '<div class="instrument-hero"><h1 class="anim">' + cat.label + ' Excerpts for <em>' + displayName + '</em></h1><p class="subtitle anim d1">A library of audition passages</p></div>' +
+    '<div class="instrument-hero"><h1 class="anim">' + cat.label + ' Excerpts for <em>' + displayName + '</em></h1><p class="subtitle anim d1">Brought to you by IMSLP</p></div>' +
     tabsHtml +
     '<div id="' + contentId + '">' + contentHtml + '</div></div>';
 }
