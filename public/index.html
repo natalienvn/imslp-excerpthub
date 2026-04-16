@@ -63,58 +63,60 @@
 
   .categories-section { padding: 8px 48px 100px; max-width: 900px; margin: 0 auto; }
 
-  .home-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    padding: 8px 48px 100px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .home-col { min-width: 0; }
-
-  .home-instrument-list {
+  .or-divider {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     gap: 16px;
+    margin: 20px 0 4px;
   }
-  .home-inst-family {
+  .or-divider .or-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .or-divider span {
+    font-size: 13px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .browse-all-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 16px;
+    padding: 18px 24px;
     background: var(--bg-card);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 16px 20px;
-  }
-  .home-inst-family-label {
-    font-size: 11px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    margin-bottom: 10px;
-  }
-  .home-inst-items {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 6px;
-  }
-  .home-inst-item {
-    font-size: 13px;
-    color: var(--text-secondary);
-    padding: 6px 14px;
-    border-radius: 8px;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   }
-  .home-inst-item:hover {
+  .browse-all-bar:hover {
+    border-color: var(--border-hover);
+    background: var(--bg-card-hover);
+    transform: translateX(4px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+  }
+  .browse-all-icon {
+    width: 42px; height: 42px;
+    border-radius: 10px;
     background: var(--accent-dim);
-    color: var(--accent-bright);
-    border-color: var(--accent-glow);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
   }
-  .home-inst-item strong {
-    color: var(--accent-bright);
-    font-weight: 600;
+  .browse-all-text { flex: 1; }
+  .browse-all-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .browse-all-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 2px;
   }
   .section-label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 16px; }
   .category-stack { display: flex; flex-direction: column; gap: 12px; }
@@ -242,7 +244,6 @@
     .hero .subtitle { font-size: 14px; }
     .breadcrumb { padding: 12px 20px; }
     .categories-section { padding: 8px 20px 80px; }
-    .home-grid { grid-template-columns: 1fr; gap: 32px; padding: 8px 20px 80px; }
     .category-row { padding: 16px 20px; gap: 14px; flex-wrap: wrap; }
     .cat-icon { width: 40px; height: 40px; font-size: 18px; border-radius: 10px; }
     .cat-title { font-size: 22px; }
@@ -298,75 +299,42 @@
     <h1 class="anim d1">The Audition <em>Library</em></h1>
     <p class="subtitle anim d2">Symphonic audition excerpts, curated by professionals.<br>Browse by category and instrument.</p>
   </div>
-  <div class="home-grid">
-    <!-- LEFT: Categories -->
-    <div class="home-col">
-      <div class="section-label anim d3">Browse by Category</div>
-      <div class="category-stack">
-        <div class="category-row anim d4" onclick="showScreen('symphony')">
-          <div class="cat-icon">🎻</div>
-          <div class="cat-info"><div class="cat-title">Symphony</div><div class="cat-stat">110 excerpts</div></div>
-          <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+  <div class="categories-section">
+    <div class="section-label anim d3">Select a Category</div>
+    <div class="category-stack">
+      <div class="category-row anim d4" onclick="showScreen('symphony')">
+        <div class="cat-icon">🎻</div>
+        <div class="cat-info"><div class="cat-title">Symphony</div><div class="cat-stat">110 excerpts</div></div>
+        <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+      </div>
+      <div class="category-row anim d5" onclick="showScreen('opera')">
+        <div class="cat-icon">🎭</div>
+        <div class="cat-info"><div class="cat-title">Opera</div><div class="cat-stat">Coming soon</div></div>
+        <div class="cat-collab-inline">
+          <div class="cat-collab-text">In collaboration with the<br><strong>Metropolitan Opera Orchestra</strong></div>
         </div>
-        <div class="category-row anim d5" onclick="showScreen('opera')">
-          <div class="cat-icon">🎭</div>
-          <div class="cat-info"><div class="cat-title">Opera</div><div class="cat-stat">Coming soon</div></div>
-          <div class="cat-collab-inline">
-            <div class="cat-collab-text">In collaboration with the<br><strong>Metropolitan Opera Orchestra</strong></div>
-          </div>
-          <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-        </div>
-        <div class="category-row anim d6" onclick="showScreen('ballet')">
-          <div class="cat-icon">🩰</div>
-          <div class="cat-info"><div class="cat-title">Ballet</div><div class="cat-stat">Coming soon</div></div>
-          <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
-        </div>
+        <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
+      </div>
+      <div class="category-row anim d6" onclick="showScreen('ballet')">
+        <div class="cat-icon">🩰</div>
+        <div class="cat-info"><div class="cat-title">Ballet</div><div class="cat-stat">Coming soon</div></div>
+        <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
       </div>
     </div>
 
-    <!-- RIGHT: Instruments -->
-    <div class="home-col">
-      <div class="section-label anim d3">Browse by Instrument</div>
-      <div class="home-instrument-list">
-        <div class="home-inst-family anim d4">
-          <div class="home-inst-family-label">Woodwinds</div>
-          <div class="home-inst-items">
-            <div class="home-inst-item" onclick="showScreen('all-flute')">Flute</div>
-            <div class="home-inst-item" onclick="showScreen('all-oboe')"><strong>Oboe</strong></div>
-            <div class="home-inst-item" onclick="showScreen('all-clarinet')">Clarinet</div>
-            <div class="home-inst-item" onclick="showScreen('all-bassoon')">Bassoon</div>
-          </div>
-        </div>
-        <div class="home-inst-family anim d5">
-          <div class="home-inst-family-label">Brass</div>
-          <div class="home-inst-items">
-            <div class="home-inst-item" onclick="showScreen('all-horn')">French Horn</div>
-            <div class="home-inst-item" onclick="showScreen('all-trumpet')">Trumpet</div>
-            <div class="home-inst-item" onclick="showScreen('all-trombone')">Trombone</div>
-            <div class="home-inst-item" onclick="showScreen('all-tuba')">Tuba</div>
-          </div>
-        </div>
-        <div class="home-inst-family anim d6">
-          <div class="home-inst-family-label">Strings</div>
-          <div class="home-inst-items">
-            <div class="home-inst-item" onclick="showScreen('all-violin')">Violin</div>
-            <div class="home-inst-item" onclick="showScreen('all-viola')">Viola</div>
-            <div class="home-inst-item" onclick="showScreen('all-cello')">Cello</div>
-            <div class="home-inst-item" onclick="showScreen('all-double-bass')">Double Bass</div>
-            <div class="home-inst-item" onclick="showScreen('all-harp')">Harp</div>
-          </div>
-        </div>
-        <div class="home-inst-family anim d7">
-          <div class="home-inst-family-label">Percussion & Keyboard</div>
-          <div class="home-inst-items">
-            <div class="home-inst-item" onclick="showScreen('all-timpani')">Timpani</div>
-            <div class="home-inst-item" onclick="showScreen('all-percussion')">Percussion</div>
-            <div class="home-inst-item" onclick="showScreen('all-piano')">Piano</div>
-            <div class="home-inst-item" onclick="showScreen('all-celesta')">Celesta</div>
-            <div class="home-inst-item" onclick="showScreen('all-organ')">Organ</div>
-          </div>
-        </div>
+    <div class="or-divider anim d7">
+      <div class="or-line"></div>
+      <span>or</span>
+      <div class="or-line"></div>
+    </div>
+
+    <div class="browse-all-bar anim d8" onclick="showScreen('all')">
+      <div class="browse-all-icon">🎵</div>
+      <div class="browse-all-text">
+        <div class="browse-all-title">Browse by Instrument</div>
+        <div class="browse-all-desc">Skip categories and go straight to your instrument</div>
       </div>
+      <div class="cat-arrow"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></div>
     </div>
   </div>
 </div>
