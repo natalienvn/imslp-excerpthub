@@ -223,6 +223,205 @@
   .excerpt-more { text-align: center; padding: 10px; border-top: 1px solid var(--border); font-size: 13px; color: var(--accent-bright); cursor: pointer; transition: background 0.2s; }
   .excerpt-more:hover { background: rgba(74,144,217,0.05); }
 
+  /* Masterclass badge */
+  .masterclass-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #fbbf24;
+    background: rgba(251,191,36,0.15);
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid rgba(251,191,36,0.25);
+  }
+
+  /* Excerpt detail page */
+  .detail-layout {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 24px;
+    padding: 0 48px 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .detail-sheet {
+    background: #f0ece4;
+    border-radius: var(--radius);
+    padding: 24px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    position: relative;
+  }
+  .detail-staff {
+    height: 48px;
+    position: relative;
+  }
+  .detail-staff .staff-line { background: #999; }
+  .detail-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .detail-info {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .detail-info h2 {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 500;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .detail-info .detail-composer {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .detail-meta {
+    font-size: 13px;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .detail-meta-sep { color: var(--text-muted); }
+  .detail-recommended {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .detail-recommended a {
+    color: var(--accent-bright);
+    text-decoration: none;
+  }
+  .detail-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-top: 1px solid var(--border);
+  }
+  .detail-nav-btn {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .detail-nav-btn:hover { background: rgba(255,255,255,0.08); }
+  .detail-nav-btn svg { width: 16px; height: 16px; stroke: var(--text-secondary); fill: none; }
+  .detail-nav-count {
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  .detail-actions {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .detail-actions-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .detail-btn {
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,0.03);
+    color: var(--text-secondary);
+  }
+  .detail-btn:hover { background: rgba(255,255,255,0.06); color: var(--white); }
+  .detail-btn.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--white);
+  }
+  .detail-btn.primary:hover { background: var(--accent-bright); }
+  .detail-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
+
+  /* Masterclass section on detail page */
+  .masterclass-section {
+    padding: 0 48px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .masterclass-header {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .masterclass-header .mc-badge {
+    font-size: 11px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    background: rgba(251,191,36,0.15);
+    color: #fbbf24;
+    padding: 3px 10px;
+    border-radius: 6px;
+    border: 1px solid rgba(251,191,36,0.25);
+  }
+  .masterclass-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 12px;
+  }
+  .masterclass-label {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .masterclass-label strong { color: var(--white); }
+
+  @media (max-width: 768px) {
+    .detail-layout { grid-template-columns: 1fr; padding: 0 20px 32px; }
+    .masterclass-section { padding: 0 20px 80px; }
+  }
+
   .screen-indicator { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 6px 10px; z-index: 200; box-shadow: 0 8px 32px rgba(0,0,0,0.5); }
   .screen-dot { padding: 6px 12px; border-radius: 7px; font-size: 11px; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all 0.2s; white-space: nowrap; }
   .screen-dot:hover { color: var(--text-secondary); }
@@ -507,6 +706,107 @@
   </div>
 </div>
 
+<!-- BRANDENBURG DETAIL PAGE -->
+<div class="screen" id="screen-brandenburg-detail">
+  <nav class="nav">
+    <div class="nav-left">
+      <div class="nav-logo" onclick="showScreen('home')">IMSLP <span>Excerpts</span></div>
+      <div class="nav-link" onclick="showScreen('symphony-oboe')" style="cursor:pointer">← Back to Browse</div>
+    </div>
+    <div class="nav-right">
+      <div class="nav-pill instrument-active">Oboe</div>
+      <div class="nav-avatar"><svg viewBox="0 0 24 24" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+    </div>
+  </nav>
+
+  <div style="padding:24px 48px 16px;max-width:1200px;margin:0 auto;">
+    <div class="breadcrumb" style="padding:0;">
+      <span class="breadcrumb-link" onclick="showScreen('home')">Excerpt Hub</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-link" onclick="showScreen('symphony')">Symphony</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-link" onclick="showScreen('symphony-oboe')">Oboe</span>
+      <span class="breadcrumb-sep">›</span>
+      <span class="breadcrumb-current">Brandenburg Concerto No.1</span>
+    </div>
+  </div>
+
+  <div class="detail-layout anim">
+    <!-- Left column: sheet music + masterclass below -->
+    <div>
+      <div class="detail-sheet">
+        <div class="detail-staff"><div class="staff-line" style="top:18%"></div><div class="staff-line" style="top:28%"></div><div class="staff-line" style="top:38%"></div><div class="staff-line" style="top:48%"></div><div class="staff-line" style="top:58%"></div></div>
+        <div class="detail-staff"><div class="staff-line" style="top:18%"></div><div class="staff-line" style="top:28%"></div><div class="staff-line" style="top:38%"></div><div class="staff-line" style="top:48%"></div><div class="staff-line" style="top:58%"></div></div>
+        <div class="detail-staff"><div class="staff-line" style="top:18%"></div><div class="staff-line" style="top:28%"></div><div class="staff-line" style="top:38%"></div><div class="staff-line" style="top:48%"></div><div class="staff-line" style="top:58%"></div></div>
+        <div class="detail-staff"><div class="staff-line" style="top:18%"></div><div class="staff-line" style="top:28%"></div><div class="staff-line" style="top:38%"></div><div class="staff-line" style="top:48%"></div><div class="staff-line" style="top:58%"></div></div>
+        <div class="detail-staff"><div class="staff-line" style="top:18%"></div><div class="staff-line" style="top:28%"></div><div class="staff-line" style="top:38%"></div><div class="staff-line" style="top:48%"></div><div class="staff-line" style="top:58%"></div></div>
+        <div class="detail-staff"><div class="staff-line" style="top:18%"></div><div class="staff-line" style="top:28%"></div><div class="staff-line" style="top:38%"></div><div class="staff-line" style="top:48%"></div><div class="staff-line" style="top:58%"></div></div>
+        <div class="detail-staff"><div class="staff-line" style="top:18%"></div><div class="staff-line" style="top:28%"></div><div class="staff-line" style="top:38%"></div><div class="staff-line" style="top:48%"></div><div class="staff-line" style="top:58%"></div></div>
+      </div>
+
+      <!-- Masterclass right below the excerpt -->
+      <div style="margin-top:20px;">
+        <div class="masterclass-header">Masterclass <span class="mc-badge">Exclusive</span></div>
+        <div class="masterclass-video">
+          <div class="video-play-btn" style="position:relative;z-index:1;">
+            <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21" fill="white"/></svg>
+          </div>
+          <div class="video-label" style="position:relative;z-index:1;"><strong>John Smith</strong>, Principal Oboe — Chicago Symphony Orchestra</div>
+        </div>
+        <div class="masterclass-label">
+          <strong>John Smith</strong> (Principal Oboe, Chicago Symphony Orchestra) discusses phrasing, articulation, and audition tips for this excerpt.
+        </div>
+      </div>
+    </div>
+
+    <!-- Right column: info + actions -->
+    <div class="detail-sidebar">
+      <div class="detail-info">
+        <h2>Brandenburg Concerto No.1 in F major, BWV 1046</h2>
+        <div class="detail-composer">Johann Sebastian Bach</div>
+        <div class="detail-meta">
+          I. Allegro non troppo <span class="detail-meta-sep">·</span> mm.72 to end <span class="detail-meta-sep">·</span> Oboe 1
+        </div>
+        <div class="detail-recommended">Recommended by <a href="#">Eugene Izotov</a></div>
+        <div class="detail-nav">
+          <div class="detail-nav-btn"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></div>
+          <div class="detail-nav-count">1 of 5 excerpts</div>
+          <div class="detail-nav-btn"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></div>
+        </div>
+      </div>
+
+      <div class="detail-actions">
+        <div class="detail-actions-title">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" style="width:18px;height:18px;stroke:var(--text-muted);fill:none"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Actions
+        </div>
+        <div class="detail-btn primary">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Open in Clara
+        </div>
+        <div class="detail-btn">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download PDF
+        </div>
+        <div class="detail-btn">
+          <svg viewBox="0 0 24 24" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          Show IMSLP File
+        </div>
+        <div class="detail-btn">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          Favorite
+        </div>
+        <div class="detail-btn">
+          <svg viewBox="0 0 24 24" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+          60 BPM
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BRANDENBURG DETAIL PAGE END -->
+
 <div id="dynamic-screens"></div>
 
 <div class="screen-indicator">
@@ -568,13 +868,15 @@ function buildInstrumentScreen(instId, inst, catKey, cat) {
   let contentHtml = '';
   if (isLive) {
     const excerpts = [
-      { title: 'Brandenburg Concerto No.1 in F major, BWV 1046', composer: 'Johann Sebastian Bach', movement: 'I. Allegro non troppo', measures: '(mm.72 to end)', part: displayName + ' 1' },
+      { title: 'Brandenburg Concerto No.1 in F major, BWV 1046', composer: 'Johann Sebastian Bach', movement: 'I. Allegro non troppo', measures: '(mm.72 to end)', part: displayName + ' 1', hasMasterclass: true },
       { title: 'Brandenburg Concerto No.2 in F major, BWV 1047', composer: 'Johann Sebastian Bach', movement: 'I. [no tempo indication]', measures: '(7th measure of [C] to 2 measures before [D])', part: displayName + ' solo' },
       { title: 'Concerto for Harpsichord in F minor, BWV 1056', composer: 'Johann Sebastian Bach', movement: 'II. Largo', measures: '(complete)', part: displayName + ' 1' },
     ];
     let els = '';
     excerpts.forEach(function(ex, i) {
-      els += '<div class="excerpt-card anim d' + (4+i) + '"><div class="excerpt-header"><div class="excerpt-title">' + ex.title + '</div><div class="excerpt-composer">' + ex.composer + '</div></div><div class="excerpt-body"><div class="excerpt-img">' + staffSvg + '</div><div class="excerpt-info"><div class="movement"><strong>' + ex.movement + '</strong> ' + ex.measures + '</div><div class="part">' + ex.part + '</div></div><div class="excerpt-fav">' + favSvg + '</div></div>' + (i === 0 ? '<div class="excerpt-more">+ more excerpts</div>' : '') + '</div>';
+      var mcBadge = ex.hasMasterclass ? '</div><div class="masterclass-badge" style="margin-left:0;margin-top:6px;">\uD83C\uDFAC Includes masterclass from John Smith, Chicago Symphony</div><div style="display:none">' : '';
+      var clickAttr = ex.hasMasterclass ? ' onclick="showScreen(\'brandenburg-detail\')" style="cursor:pointer"' : '';
+      els += '<div class="excerpt-card anim d' + (4+i) + '"' + clickAttr + '><div class="excerpt-header"><div style="flex:1"><div class="excerpt-title">' + ex.title + mcBadge + '</div></div><div class="excerpt-composer">' + ex.composer + '</div></div><div class="excerpt-body"><div class="excerpt-img">' + staffSvg + '</div><div class="excerpt-info"><div class="movement"><strong>' + ex.movement + '</strong> ' + ex.measures + '</div><div class="part">' + ex.part + '</div></div><div class="excerpt-fav">' + favSvg + '</div></div>' + (i === 0 ? '<div class="excerpt-more">+ more excerpts</div>' : '') + '</div>';
     });
     contentHtml = '<div class="search-area"><div class="search-bar anim d3"><svg viewBox="0 0 24 24" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg><input type="text" placeholder="Search works or composers..."></div><div class="search-actions anim d3"><div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></div><div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div class="search-action-btn"><svg viewBox="0 0 24 24" stroke-width="2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="20" y2="12"/><line x1="12" y1="18" x2="20" y2="18"/></svg></div></div></div><div class="excerpt-count anim d3">' + inst.excerpts + ' excerpts</div><div class="excerpts-list">' + els + '</div>';
   } else {
